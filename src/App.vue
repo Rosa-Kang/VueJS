@@ -1,7 +1,13 @@
 <template>
   <div>
       {{ count }}
-      <h1>Vue is Mounted</h1>
+      <h1>{{ rowHtml }}</h1>
+      <h2 v-html="rowHtml2"></h2>
+
+      <div :class="{ active : isActive }">Is it green?</div>
+      <button @click="change">Button</button>
+
+      <h3>Style Binding</h3>
   </div>
 </template>
 
@@ -9,27 +15,23 @@
 export default {
   data () {
     return {
-      count: 0,
+      rowHtml: 'This is words',
+      rowHtml2: '<span style="color:red">This has to be red</span>',
+      isActive: false,
     }
   },
-
-  beforeCreate() {
-    console.log('LifeCycle is beforeCreated', this.count)
-  },
-  created() {
-    console.log('LifeCycle is created', this.count)
-  },
-
-  beforeMount() {
-    console.log('Lifecycle is beforeMount', document.querySelector('h1'))
-  },
-  mounted() {
-    console.log('Lifecycle is mounted', document.querySelector('h1'))
-  },
+  methods : {
+        change() {
+        this.isActive = !this.isActive
+        },
+      }
   
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+h2.active {
+  color: green;
+}
 
 </style>
