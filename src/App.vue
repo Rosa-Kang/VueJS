@@ -15,16 +15,9 @@
 export default {
   data () {
     return {
-      rowHtml: 'This is words',
-      rowHtml2: '<span style="color:red">This has to be red</span>',
-      isActive: false,
+      isVisible : false,
     }
-  },
-  methods : {
-        change() {
-        this.isActive = !this.isActive
-        },
-      }
+  }
   
 }
 </script>
