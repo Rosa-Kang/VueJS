@@ -1,13 +1,10 @@
 <template>
   <div>
-      {{ count }}
-      <h1>{{ rowHtml }}</h1>
-      <h2 v-html="rowHtml2"></h2>
+     <h1>{{ rawHtml }}</h1>
+     <h2 v-html="rawHtml2" :class="{ active : isActive }"></h2>
+     <button @click="change" >Change Color</button>
 
-      <div :class="{ active : isActive }">Is it green?</div>
-      <button @click="change">Button</button>
-
-      <h3>Style Binding</h3>
+     <p>Style Binding Test</p>
   </div>
 </template>
 
@@ -15,16 +12,22 @@
 export default {
   data () {
     return {
-      isVisible : false,
+      rawHtml: 'This is string',
+      rawHtml2: 'This is supposed to be varying</span>',
+      isActive: false
     }
+  },
+  methods: {
+      change() {
+        this.isActive = !this.isActive;
+        console.log('button is clicked')
+      }
   }
-  
 }
 </script>
 
 <style scoped>
 h2.active {
-  color: green;
+  color: aquamarine
 }
-
 </style>
